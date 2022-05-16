@@ -1,0 +1,563 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  '/api/products/index/{pages}':
+    get:
+      summary: 'Display a listing of Products.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Product Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: pages
+        description: 'for paginate.'
+        example: 10
+        required: true
+        schema:
+          type: integer
+  /api/products/store:
+    post:
+      summary: 'Store a newly product in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Product Management'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: dicta
+                description:
+                  type: string
+                  description: ''
+                  example: sunt
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+              required:
+                - name
+                - description
+                - image
+      security: []
+  '/api/products/show/{id}':
+    get:
+      summary: 'Display a specified product.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Product Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'product ID.'
+        example: 12
+        required: true
+        schema:
+          type: integer
+  '/api/products/update/{id}':
+    put:
+      summary: 'Update a specified product in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Product Management'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: ea
+                description:
+                  type: string
+                  description: ''
+                  example: debitis
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+              required:
+                - name
+                - description
+                - image
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'product ID.'
+        example: 10
+        required: true
+        schema:
+          type: integer
+  '/api/products/softdelete/{id}':
+    delete:
+      summary: 'SoftDelete a specified product from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Product Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'product ID.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/products/forcedelete/{id}':
+    delete:
+      summary: 'ForceDelete a specified product from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Product Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'product ID.'
+        example: 6
+        required: true
+        schema:
+          type: integer
+  '/api/products/restore/{id}':
+    get:
+      summary: 'Restore a specified product from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Product Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'product ID.'
+        example: 18
+        required: true
+        schema:
+          type: integer
+  /api/auth/me:
+    get:
+      summary: 'Display User profile.'
+      description: "Get user profile\n\nMust be authenticated"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Profile Management'
+      security: []
+    put:
+      summary: 'Update user profile.'
+      description: 'Must be authenticated'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Profile Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters.'
+                  example: uqv
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: pwswr
+                gender:
+                  type: string
+                  description: 'Must be one of <code>male</code> or <code>female</code>.'
+                  example: female
+                city:
+                  type: string
+                  description: ''
+                  example: natus
+                bio:
+                  type: string
+                  description: ''
+                  example: ut
+              required:
+                - name
+                - password
+                - gender
+                - city
+                - bio
+      security: []
+  /api/auth/register:
+    post:
+      summary: 'User Rigester'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters.'
+                  example: saw
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: stoltenberg.lilla@example.org
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: urb
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/auth/login:
+    post:
+      summary: 'User login'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: aframi@example.net
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: fouiky
+              required:
+                - email
+                - password
+      security: []
+  /api/auth/logout:
+    get:
+      summary: 'User logout'
+      description: 'Must be authenticated'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'User Management'
+      security: []
+  /api/auth/refresh:
+    get:
+      summary: 'Refresh user token'
+      description: 'Must be authenticated'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'User Management'
+      security: []
+tags:
+  -
+    name: 'Product Management'
+    description: "\nAPIs to manage the products"
+  -
+    name: 'Profile Management'
+    description: "\nAPIs to manage the user profile"
+  -
+    name: 'User Management'
+    description: "\nAPIs to manage the user"
